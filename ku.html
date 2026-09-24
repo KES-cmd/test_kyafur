@@ -1,0 +1,2237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Куафюр · студия Натальи Юдиной</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  :root{
+    --graphite:#221519;
+    --graphite-deep:#140b0f;
+    --graphite-soft:#332025;
+
+    --wine:#6e1f33;
+    --wine-deep:#4a0f22;
+    --wine-soft:#8c3a4f;
+
+    --rose-dark:#3d1a24;
+    --rose-deep:#2a0f18;
+
+    --champagne:#e0c9a6;
+    --champagne-soft:#f0ddb8;
+    --champagne-deep:#b89a6a;
+
+    --silver:#c8c2c4;
+    --silver-mute:#948d90;
+
+    --paper:#f7f3f2;
+    --paper-100:#efe8e7;
+    --paper-200:#e2d6d5;
+
+    --text-dark:#1a0f12;
+    --text-muted:#6f5a5f;
+
+    --shadow-sm:0 10px 30px -12px rgba(20,11,15,.28);
+    --shadow-md:0 28px 50px -20px rgba(20,11,15,.45);
+
+    --radius:34px;
+    --radius-sm:22px;
+
+    --header-h: 84px;
+  }
+
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--text-dark);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;inset:-20%;
+    background:
+      radial-gradient(700px circle at 12% 8%, rgba(224,201,166,.18), transparent 60%),
+      radial-gradient(700px circle at 88% 20%, rgba(110,31,51,.14), transparent 60%),
+      radial-gradient(600px circle at 50% 100%, rgba(61,26,36,.16), transparent 65%);
+    pointer-events:none;z-index:0;
+    animation:bgFloat 24s ease-in-out infinite alternate;
+  }
+  @keyframes bgFloat{
+    0%{transform:translate3d(0,0,0) scale(1)}
+    100%{transform:translate3d(-3%,2%,0) scale(1.06)}
+  }
+
+  .container{max-width:1280px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+  /* широкий контейнер для услуг, билета, портфолио и контактов */
+  .container-wide{
+    max-width:1600px;
+    margin:0 auto;
+    padding:0 12px;
+    position:relative;
+    z-index:2;
+  }
+
+  /* HEADER */
+  .header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:transparent;
+    border-bottom:1px solid transparent;
+    padding:16px 0;
+    transition:background .4s ease, padding .35s ease, border-color .35s ease,
+               box-shadow .35s ease, backdrop-filter .4s ease;
+  }
+
+  .header.scrolled{
+    background:rgba(247,243,242,.94);
+    backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    border-bottom-color:rgba(26,15,18,.08);
+    padding:10px 0;
+    box-shadow:0 10px 30px -18px rgba(20,11,15,.35);
+  }
+
+  .header-inner{
+    max-width:100%;
+    margin:0 auto;
+    padding:0 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+
+  @media (min-width:1400px){
+    .header-inner{ padding:0 32px; }
+  }
+
+  .brand{display:flex;align-items:center;gap:16px;text-decoration:none;transition:transform .3s ease}
+  .brand:hover{transform:translateY(-1px)}
+
+  .brand-mark{
+    width:54px;height:54px;border-radius:12px;
+    background:#6b1220;position:relative;overflow:hidden;flex-shrink:0;
+    box-shadow:0 10px 22px -10px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.1);
+    transition:box-shadow .3s ease;
+  }
+  .header.scrolled .brand-mark{
+    box-shadow:0 10px 22px -10px rgba(107,18,32,.75), inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+  .brand-mark span{
+    position:absolute;left:-25%;width:150%;height:10%;
+    background:#fff;border-radius:50% 40% 60% 45% / 60% 50% 55% 40%;
+    animation:zebraSlide 5.5s ease-in-out infinite alternate;opacity:.96;
+  }
+  .brand-mark span:nth-child(1){top:6%;transform:rotate(-24deg);height:9%}
+  .brand-mark span:nth-child(2){top:22%;transform:rotate(-26deg);width:155%;height:11%}
+  .brand-mark span:nth-child(3){top:38%;transform:rotate(-28deg);width:160%;height:12%}
+  .brand-mark span:nth-child(4){top:55%;transform:rotate(-26deg);width:150%;height:11%}
+  .brand-mark span:nth-child(5){top:71%;transform:rotate(-24deg);width:155%;height:10%}
+  .brand-mark span:nth-child(6){top:85%;transform:rotate(-22deg);width:145%;height:9%}
+  @keyframes zebraSlide{
+    0%{transform:translateX(-5px) rotate(-25deg)}
+    100%{transform:translateX(5px) rotate(-25deg)}
+  }
+
+  .brand-text{display:flex;flex-direction:column;line-height:1;gap:3px}
+  .brand-name{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:22px;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:#fff;
+    transition:color .35s ease;
+    text-shadow:0 2px 14px rgba(0,0,0,.4);
+  }
+  .brand-sub{
+    font-family:'Inter',sans-serif;font-size:8.5px;letter-spacing:.24em;
+    text-transform:uppercase;font-weight:500;
+    color:rgba(255,255,255,.85);
+    transition:color .35s ease;
+    text-shadow:0 1px 10px rgba(0,0,0,.4);
+  }
+  .brand-founded{
+    font-family:'Inter',sans-serif;font-size:7.5px;letter-spacing:.28em;
+    text-transform:uppercase;font-weight:500;
+    color:rgba(255,255,255,.6);
+    transition:color .35s ease;
+  }
+
+  .header.scrolled .brand-name{color:#6b1220;text-shadow:none}
+  .header.scrolled .brand-sub{color:#6b1220;opacity:.85;text-shadow:none}
+  .header.scrolled .brand-founded{color:#6b1220;opacity:.6}
+
+  .nav-links{display:flex;gap:32px;font-weight:500;font-size:15px}
+  .nav-links a{
+    text-decoration:none;
+    color:rgba(255,255,255,.92);
+    position:relative;
+    transition:color .3s ease;
+    text-shadow:0 1px 10px rgba(0,0,0,.4);
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:-7px;width:0;height:2px;
+    background:linear-gradient(90deg,var(--champagne),var(--champagne-soft));
+    transition:width .3s ease;border-radius:2px;
+  }
+  .nav-links a:hover{color:#fff}
+  .nav-links a:hover::after{width:100%}
+
+  .header.scrolled .nav-links a{
+    color:var(--text-dark);
+    text-shadow:none;
+  }
+  .header.scrolled .nav-links a::after{
+    background:linear-gradient(90deg,var(--wine),var(--champagne-deep));
+  }
+  .header.scrolled .nav-links a:hover{color:var(--wine)}
+
+  .phone-header{
+    display:inline-flex;align-items:center;gap:9px;
+    color:#fff;
+    padding:11px 22px;border-radius:60px;font-weight:500;font-size:15px;
+    text-decoration:none;position:relative;overflow:hidden;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    transition:transform .25s ease, background .3s ease, border-color .3s ease, color .3s ease;
+  }
+  .phone-header svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.6;fill:none}
+  .phone-header::before{
+    content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    transform:skewX(-20deg);transition:left .6s ease;
+  }
+  .phone-header:hover::before{left:130%}
+  .phone-header:hover{
+    transform:translateY(-2px);
+    background:rgba(255,255,255,.18);
+    border-color:rgba(224,201,166,.6);
+  }
+
+  .header.scrolled .phone-header{
+    background:linear-gradient(135deg,var(--graphite),var(--wine-deep));
+    border-color:transparent;
+    color:#fff;
+    box-shadow:0 14px 26px -14px rgba(20,11,15,.9);
+  }
+  .header.scrolled .phone-header:hover{
+    box-shadow:0 20px 34px -14px rgba(20,11,15,1);
+  }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    min-height:700px;
+    max-height:1000px;
+    overflow:hidden;
+    z-index:1;
+    isolation:isolate;
+    background:#140b0f;
+  }
+
+  .slides{position:absolute;inset:0;z-index:1}
+
+  .slide{
+    position:absolute;inset:0;
+    opacity:0;
+    transition:opacity 1.4s ease;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    will-change:opacity, filter, transform;
+    filter:brightness(1) saturate(1);
+  }
+  .slide.active{opacity:1}
+
+  .slide.s1{ background-image:url('image/slide1.jpg'); background-color:#140b0f; }
+  .slide.s2{ background-image:url('image/slide2.jpg'); background-color:#221519; }
+  .slide.s3{ background-image:url('image/slide3.jpg'); background-color:#2a0f18; }
+  .slide.s4{ background-image:url('image/slide4.jpg'); background-color:#3d1a24; }
+  .slide.s5{ background-image:url('image/slide5.jpg'); background-color:#4a0f22; }
+
+  .slide.s1.active{animation:breatheWarm 16s ease-in-out infinite}
+  .slide.s2.active{animation:breatheDeep 14s ease-in-out infinite}
+  .slide.s3.active{animation:breatheSlow 18s ease-in-out infinite}
+  .slide.s4.active{animation:breatheWarm 15s ease-in-out infinite reverse}
+  .slide.s5.active{animation:breatheDeep 17s ease-in-out infinite}
+
+  @keyframes breatheWarm{
+    0%,100%{filter:brightness(.94) saturate(.95);transform:scale(1)}
+    50%    {filter:brightness(1.06) saturate(1.08);transform:scale(1.04)}
+  }
+  @keyframes breatheDeep{
+    0%,100%{filter:brightness(.92) saturate(.9);transform:scale(1.01)}
+    50%    {filter:brightness(1.1) saturate(1.15);transform:scale(1.06)}
+  }
+  @keyframes breatheSlow{
+    0%,100%{filter:brightness(.9) saturate(.88);transform:scale(1)}
+    50%    {filter:brightness(1.08) saturate(1.12);transform:scale(1.05)}
+  }
+
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(115deg,
+      rgba(20,11,15,.72) 0%,
+      rgba(20,11,15,.42) 40%,
+      rgba(61,26,36,.18) 70%,
+      rgba(20,11,15,.4) 100%);
+    z-index:2;pointer-events:none;
+    animation:overlayBreathe 20s ease-in-out infinite;
+  }
+  @keyframes overlayBreathe{
+    0%,100%{opacity:.94}
+    50%{opacity:1}
+  }
+
+  .hero-content{
+    position:relative;
+    z-index:3;
+    height:100%;
+    max-width:1360px;
+    margin:0 auto;
+    padding:calc(var(--header-h) + 60px) 32px 90px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    color:#fff;
+  }
+
+  .hero-top{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    max-width:640px;
+  }
+
+  .hero-middle{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    margin: auto 0;
+    max-width:760px;
+    padding-left:32px;
+    border-left:1px solid rgba(224,201,166,.28);
+    position:relative;
+  }
+  .hero-middle::before{
+    content:'';
+    position:absolute;
+    left:-4.5px;
+    top:26px;
+    width:8px;height:8px;
+    border-radius:50%;
+    background:var(--champagne);
+    box-shadow:0 0 0 4px rgba(224,201,166,.2), 0 0 18px rgba(224,201,166,.8);
+  }
+
+  .hero-bottom{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(224,201,166,.14);
+    border:1px solid rgba(224,201,166,.4);
+    color:var(--champagne-soft);
+    padding:10px 24px;border-radius:60px;
+    font-size:12px;font-weight:600;
+    letter-spacing:.26em;text-transform:uppercase;
+    backdrop-filter:blur(8px);
+    align-self:flex-start;
+  }
+  .hero-badge .dot{
+    width:7px;height:7px;border-radius:50%;background:var(--champagne);
+    box-shadow:0 0 0 0 rgba(224,201,166,.7);
+    animation:pulseDot 2s ease-in-out infinite;
+  }
+  @keyframes pulseDot{
+    0%,100%{box-shadow:0 0 0 0 rgba(224,201,166,.7)}
+    50%{box-shadow:0 0 0 8px rgba(224,201,166,0)}
+  }
+
+  .hero-age{
+    display:flex;
+    align-items:baseline;
+    gap:28px;
+    flex-wrap:wrap;
+    margin-bottom:4px;
+  }
+  .hero-age .num{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:clamp(150px, 18vw, 260px);line-height:.82;letter-spacing:-.05em;
+    background:linear-gradient(180deg,var(--champagne-soft) 0%,var(--champagne) 55%,var(--champagne-deep) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    text-shadow:0 8px 50px rgba(224,201,166,.28);
+  }
+  .hero-age .label{display:flex;flex-direction:column;gap:10px;padding-bottom:22px}
+  .hero-age .label .l1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(38px, 4.6vw, 64px);font-weight:600;font-style:italic;line-height:1;color:#fff;
+    text-shadow:0 3px 24px rgba(0,0,0,.4);
+  }
+  .hero-age .label .l2{
+    font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--champagne);font-weight:600;
+  }
+
+  .hero-sub{
+    font-size:20px;
+    color:rgba(255,255,255,.9);
+    max-width:620px;
+    line-height:1.7;
+    margin-top:8px;
+  }
+
+  .hero-actions{
+    display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+  }
+
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:12px;
+    background:linear-gradient(135deg,var(--champagne),var(--champagne-deep));
+    color:var(--graphite-deep);border:none;padding:20px 44px;border-radius:60px;
+    font-weight:600;font-size:17px;text-decoration:none;cursor:pointer;
+    position:relative;overflow:hidden;
+    box-shadow:0 22px 40px -14px rgba(224,201,166,.75);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary svg{width:15px;height:15px;stroke:var(--graphite-deep);stroke-width:2;fill:none;transition:transform .3s ease}
+  .btn-primary::before{
+    content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);
+    transform:skewX(-20deg);transition:left .7s ease;
+  }
+  .btn-primary:hover::before{left:130%}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 30px 50px -14px rgba(224,201,166,.95)}
+  .btn-primary:hover svg{transform:translateX(4px)}
+
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:20px 36px;border-radius:60px;font-weight:600;font-size:17px;
+    text-decoration:none;cursor:pointer;color:#fff;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.35);
+    backdrop-filter:blur(10px);
+    transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .btn-ghost svg{width:16px;height:16px;stroke:var(--champagne);stroke-width:1.6;fill:none}
+  .btn-ghost:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);border-color:rgba(224,201,166,.6)}
+
+  .hero-side-label{
+    position:absolute;
+    right:44px;
+    top:50%;
+    transform:translateY(-50%) rotate(90deg);
+    transform-origin:right center;
+    font-size:11px;
+    letter-spacing:.5em;
+    text-transform:uppercase;
+    color:rgba(224,201,166,.55);
+    font-weight:600;
+    z-index:4;
+    pointer-events:none;
+    white-space:nowrap;
+  }
+
+  .slider-dots{
+    display:flex;gap:12px;align-items:center;
+    position:absolute;
+    bottom:44px;
+    right:44px;
+    z-index:5;
+  }
+  .slider-dots button{
+    width:36px;height:4px;border-radius:4px;
+    background:rgba(255,255,255,.3);border:none;cursor:pointer;padding:0;
+    transition:background .3s ease, width .3s ease;
+    position:relative;overflow:hidden;
+  }
+  .slider-dots button.active{width:64px;background:rgba(224,201,166,.35)}
+  .slider-dots button.active::after{
+    content:'';position:absolute;left:0;top:0;height:100%;
+    background:var(--champagne);
+    animation:dotProgress 4.5s linear infinite;
+  }
+  @keyframes dotProgress{from{width:0}to{width:100%}}
+
+  .slider-counter{
+    position:absolute;
+    bottom:44px;
+    left:44px;
+    z-index:5;
+    font-family:'Cormorant Garamond',serif;
+    color:#fff;
+    display:flex;align-items:baseline;gap:8px;
+    letter-spacing:.06em;
+    text-shadow:0 2px 12px rgba(0,0,0,.5);
+  }
+  .slider-counter .current{
+    font-size:42px;font-weight:600;line-height:1;
+    background:linear-gradient(180deg,var(--champagne-soft),var(--champagne-deep));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .slider-counter .sep{opacity:.5;font-size:22px}
+  .slider-counter .total{font-size:22px;opacity:.75}
+
+  .slider-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:52px;height:52px;border-radius:50%;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(10px);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;z-index:5;
+    transition:background .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  .slider-arrow:hover{
+    background:rgba(224,201,166,.28);
+    border-color:rgba(224,201,166,.55);
+    transform:translateY(-50%) scale(1.08);
+  }
+  .slider-arrow svg{width:20px;height:20px;stroke:#fff;stroke-width:1.8;fill:none}
+  .slider-arrow.prev{left:32px}
+  .slider-arrow.next{right:32px}
+
+  @media (prefers-reduced-motion: reduce){
+    .slide.s1.active,
+    .slide.s2.active,
+    .slide.s3.active,
+    .slide.s4.active,
+    .slide.s5.active{
+      animation:none;filter:brightness(1) saturate(1);transform:none;
+    }
+    .hero-overlay{animation:none}
+    body::before{animation:none}
+  }
+
+  /* MARQUEE */
+  .marquee-section{
+    width:100%;
+    margin:0;
+    background:linear-gradient(135deg,var(--graphite-deep),var(--wine-deep));
+    overflow:hidden;
+    position:relative;
+    padding:22px 0;
+    border-top:1px solid rgba(224,201,166,.25);
+    border-bottom:1px solid rgba(224,201,166,.25);
+    z-index:2;
+  }
+  .marquee-section::before,
+  .marquee-section::after{
+    content:'';position:absolute;top:0;bottom:0;width:180px;z-index:2;pointer-events:none;
+  }
+  .marquee-section::before{left:0;background:linear-gradient(90deg,var(--graphite-deep),transparent)}
+  .marquee-section::after{right:0;background:linear-gradient(270deg,var(--graphite-deep),transparent)}
+  .marquee-track{
+    display:flex;gap:56px;white-space:nowrap;
+    animation:marquee 34s linear infinite;
+    font-family:'Cormorant Garamond',serif;
+    font-size:24px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--champagne-soft);padding:0 32px;
+  }
+  .marquee-track span{display:inline-flex;align-items:center;gap:56px}
+  .marquee-track span::after{content:'✦';color:var(--champagne);font-size:15px;letter-spacing:0}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* SECTIONS */
+  .section{padding:80px 0;position:relative;z-index:1}
+
+  .section-header{
+    text-align:center;
+    margin-bottom:56px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+
+  .section-header .label{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--wine);
+    background:linear-gradient(135deg,var(--paper-200),var(--champagne-soft));
+    padding:7px 20px;border-radius:60px;
+    box-shadow:0 10px 22px -14px rgba(20,11,15,.4);
+    position:relative;z-index:2;
+  }
+
+  .section-header h2{
+    font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4.4vw,52px);
+    font-weight:600;letter-spacing:-.01em;color:var(--graphite-deep);
+    line-height:1;
+    position:relative;z-index:2;
+    padding-bottom:22px;
+  }
+  .section-header h2 span{
+    background:linear-gradient(100deg,var(--wine),var(--champagne-deep));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+
+  .section-header h2::after{
+    content:'';
+    position:absolute;
+    left:50%;
+    bottom:0;
+    transform:translateX(-50%) scaleX(0);
+    transform-origin:center;
+    width:120px;
+    height:2px;
+    background:linear-gradient(90deg,transparent,var(--champagne),var(--champagne-deep),var(--champagne),transparent);
+    border-radius:2px;
+    animation:lineGrow 1.2s .4s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes lineGrow{
+    to{transform:translateX(-50%) scaleX(1)}
+  }
+
+  /* SERVICES */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+
+  .service-card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    border-radius:26px;
+    overflow:hidden;
+    background:rgba(255,255,255,.92);
+    box-shadow:var(--shadow-sm);
+    border:1px solid rgba(255,255,255,.9);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),
+               box-shadow .5s ease;
+    isolation:isolate;
+    min-height:520px;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+  }
+
+  .service-card::before{
+    content:'';position:absolute;inset:0;border-radius:26px;padding:1.5px;
+    background:linear-gradient(135deg,var(--champagne),var(--wine),var(--silver));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    opacity:0;transition:opacity .5s ease;pointer-events:none;z-index:5;
+  }
+  .service-card:hover::before{opacity:1}
+
+  .service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:var(--shadow-md), 0 0 50px -20px rgba(224,201,166,.5);
+  }
+
+  .service-photo{
+    position:relative;
+    width:100%;
+    aspect-ratio:1 / 0.78;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    overflow:hidden;
+    flex-shrink:0;
+    transition:transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .service-photo.p-manicure{ background-image:url('image/services/manicure.jpg'); background-color:#4a0f22; }
+  .service-photo.p-pedicure{ background-image:url('image/services/pedicure.jpg'); background-color:#3d1a24; }
+  .service-photo.p-haircut{  background-image:url('image/services/haircut.jpg');  background-color:#2a0f18; }
+  .service-photo.p-coloring{ background-image:url('image/services/coloring.jpg'); background-color:#6e1f33; }
+  .service-photo.p-trichology{background-image:url('image/services/trichology.jpg');background-color:#332025; }
+  .service-photo.p-payment{  background-image:url('image/services/payment.jpg');  background-color:#221519; }
+
+  .service-photo::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,
+      rgba(20,11,15,.2) 0%,
+      rgba(20,11,15,.15) 45%,
+      rgba(20,11,15,.7) 100%);
+    transition:opacity .5s ease;
+  }
+
+  .service-card:hover .service-photo{
+    transform:scale(1.04);
+  }
+
+  .service-number{
+    position:absolute;
+    top:22px;
+    left:24px;
+    z-index:2;
+    font-family:'Cormorant Garamond',serif;
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:.32em;
+    color:rgba(255,255,255,.95);
+    text-shadow:0 2px 10px rgba(0,0,0,.6);
+  }
+
+  .service-photo .photo-tag{
+    position:absolute;
+    top:20px;
+    right:20px;
+    z-index:2;
+    background:rgba(224,201,166,.92);
+    color:var(--graphite-deep);
+    padding:6px 14px;
+    border-radius:40px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    backdrop-filter:blur(6px);
+    box-shadow:0 6px 14px -8px rgba(0,0,0,.5);
+  }
+
+  .service-body{
+    padding:30px 32px 38px 32px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    flex:1;
+    position:relative;
+    z-index:2;
+  }
+
+  .service-body::before,
+  .service-body::after{
+    content:'';
+    position:absolute;
+    width:18px;
+    height:18px;
+    border-color:var(--champagne-deep);
+    border-style:solid;
+    border-width:0;
+    opacity:0;
+    transition:opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .service-body::before{
+    top:12px;
+    left:12px;
+    border-top-width:1.5px;
+    border-left-width:1.5px;
+    transform:translate(-6px,-6px);
+  }
+  .service-body::after{
+    bottom:12px;
+    right:12px;
+    border-bottom-width:1.5px;
+    border-right-width:1.5px;
+    transform:translate(6px,6px);
+  }
+  .service-card:hover .service-body::before,
+  .service-card:hover .service-body::after{
+    opacity:1;
+    transform:translate(0,0);
+  }
+
+  .service-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:32px;
+    font-weight:600;
+    letter-spacing:-.01em;
+    line-height:1.15;
+    color:var(--graphite-deep);
+    transition:color .3s ease;
+  }
+  .service-card:hover h3{
+    color:var(--wine);
+  }
+
+  .service-card p{
+    color:var(--text-muted);
+    font-size:15.5px;
+    line-height:1.65;
+    flex:1;
+    padding-bottom:6px;
+  }
+
+  .service-price{
+    position:relative;
+    font-family:'Cormorant Garamond',serif;
+    font-size:17px;
+    font-weight:600;
+    color:var(--wine);
+    letter-spacing:.06em;
+    opacity:.85;
+    transition:opacity .3s ease;
+    align-self:flex-start;
+    padding-left:22px;
+    margin-top:4px;
+  }
+  .service-price::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:50%;
+    width:9px;
+    height:9px;
+    background:var(--champagne-deep);
+    transform:translateY(-50%) rotate(45deg);
+    transition:background .3s ease, transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .service-card:hover .service-price{
+    opacity:1;
+  }
+  .service-card:hover .service-price::before{
+    background:var(--wine);
+    transform:translateY(-50%) rotate(45deg) scale(1.25);
+  }
+
+  .service-stamp{
+    position:absolute;
+    right:26px;
+    bottom:26px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:1px solid rgba(184,154,106,.4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.08em;
+    color:var(--champagne-deep);
+    transition:border-color .4s ease, color .4s ease, transform .5s cubic-bezier(.2,.8,.2,1);
+    z-index:3;
+  }
+  .service-stamp::before{
+    content:'';
+    position:absolute;
+    inset:4px;
+    border-radius:50%;
+    border:1px dashed rgba(184,154,106,.35);
+    transition:border-color .4s ease, transform .8s ease;
+  }
+  .service-card:hover .service-stamp{
+    border-color:var(--champagne);
+    color:var(--wine);
+    transform:rotate(-8deg) scale(1.08);
+  }
+  .service-card:hover .service-stamp::before{
+    border-color:var(--champagne);
+    transform:rotate(180deg);
+  }
+
+  /* ============ PROMO — ТЕАТРАЛЬНЫЙ БИЛЕТ ============ */
+  .promo-section{padding:20px 0 100px;position:relative;z-index:1}
+
+  .promo-card{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    align-items:center;
+  }
+
+  .ticket{
+    position:relative;
+    width:100%;
+    display:grid;
+    grid-template-columns: 74px 16px 1fr 96px;
+    border-radius:16px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(224,201,166,.08), transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(110,31,51,.04), transparent 55%),
+      linear-gradient(180deg, #ffffff 0%, var(--paper-100) 100%);
+    box-shadow:
+      0 30px 60px -25px rgba(20,11,15,.45),
+      inset 0 0 0 1px rgba(184,154,106,.28);
+    overflow:hidden;
+    isolation:isolate;
+  }
+
+  .ticket::before{
+    content:'';
+    position:absolute;inset:0;
+    background-image:
+      repeating-linear-gradient(45deg,
+        rgba(110,31,51,.025) 0 1px,
+        transparent 1px 9px);
+    pointer-events:none;
+    z-index:1;
+  }
+
+  /* КОРЕШОК */
+  .ticket-stub{
+    position:relative;
+    background:
+      repeating-linear-gradient(180deg,
+        rgba(255,255,255,.04) 0 1px,
+        transparent 1px 6px),
+      linear-gradient(180deg, var(--wine) 0%, var(--wine-deep) 100%);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 12px;
+    z-index:2;
+  }
+
+  .ticket-stub-text{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-size:10px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.75);
+    font-weight:600;
+    text-align:center;
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .ticket-stub-num{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-family:'Cormorant Garamond',serif;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:.06em;
+    color:var(--champagne-soft);
+    padding:14px 0;
+    border-top:1px dashed rgba(224,201,166,.4);
+    border-bottom:1px dashed rgba(224,201,166,.4);
+    margin:14px 0;
+  }
+
+  .ticket-stub-sub{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-size:9px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.55);
+    font-weight:500;
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  /* ПЕРФОРАЦИЯ */
+  .ticket-perf{
+    position:relative;
+    background:linear-gradient(180deg, #ffffff 0%, var(--paper-100) 100%);
+    z-index:2;
+  }
+  .ticket-perf::before{
+    content:'';
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    transform:translateX(-50%);
+    background-image:linear-gradient(180deg,
+      rgba(110,31,51,.5) 0 6px,
+      transparent 6px 12px);
+    background-size:1px 12px;
+  }
+
+  /* ТЕЛО БИЛЕТА */
+  .ticket-body{
+    position:relative;
+    z-index:2;
+    padding:24px 28px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    color:var(--graphite-deep);
+    min-width:0;
+  }
+
+  .ticket-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    padding-bottom:14px;
+    border-bottom:1px solid rgba(110,31,51,.15);
+  }
+
+  .ticket-header-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .ticket-logo-zebra{
+    width:34px;
+    height:34px;
+    border-radius:8px;
+    background:var(--wine);
+    position:relative;
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .ticket-logo-zebra::before,
+  .ticket-logo-zebra::after{
+    content:'';
+    position:absolute;
+    background:#fff;
+    border-radius:50% 40% 60% 45% / 60% 50% 55% 40%;
+    left:-20%;width:140%;height:14%;
+  }
+  .ticket-logo-zebra::before{
+    top:20%;transform:rotate(-22deg);
+  }
+  .ticket-logo-zebra::after{
+    top:55%;transform:rotate(-26deg);width:150%;
+  }
+
+  .ticket-logo-text{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .ticket-logo-name{
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--wine);
+    line-height:1;
+  }
+  .ticket-logo-sub{
+    font-size:8px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--wine-soft);
+    font-weight:600;
+    opacity:.85;
+  }
+
+  .ticket-header-meta{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:3px;
+    text-align:right;
+  }
+  .ticket-header-label{
+    font-size:10px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--wine);
+    font-weight:700;
+  }
+  .ticket-header-addr{
+    font-size:10px;
+    letter-spacing:.14em;
+    color:var(--wine-soft);
+    font-weight:500;
+    opacity:.8;
+  }
+
+  .ticket-main{
+    display:grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap:16px;
+    align-items:center;
+    padding:14px 0 6px;
+  }
+
+  .ticket-main-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+
+  .ticket-emblem{
+    position:relative;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border:2px solid var(--wine);
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    padding-top:22px;
+    flex-shrink:0;
+    background:
+      radial-gradient(circle at 50% 40%, rgba(224,201,166,.15), transparent 65%);
+  }
+  .ticket-emblem::before{
+    content:'';
+    position:absolute;
+    inset:6px;
+    border-radius:50%;
+    border:1px dashed rgba(140,58,79,.35);
+  }
+  .ticket-emblem-inner{
+    font-family:'Cormorant Garamond',serif;
+    font-size:62px;
+    font-weight:700;
+    line-height:.85;
+    letter-spacing:-.04em;
+    background:linear-gradient(180deg,var(--wine) 0%, var(--wine-deep) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .ticket-emblem-pct{
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    font-weight:600;
+    color:var(--wine-soft);
+    margin-left:1px;
+    opacity:.8;
+  }
+
+  .ticket-main-title{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .ticket-main-l1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(22px, 2.4vw, 30px);
+    font-weight:600;
+    font-style:italic;
+    line-height:1.1;
+    color:var(--wine-deep);
+  }
+  .ticket-main-l2{
+    font-size:10px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--wine-soft);
+    font-weight:600;
+    opacity:.75;
+  }
+
+  .ticket-main-right{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    font-family:'Cormorant Garamond',serif;
+    padding-left:20px;
+    border-left:1px dashed rgba(110,31,51,.22);
+  }
+  .ticket-row{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    font-size:17px;
+    color:var(--wine-deep);
+    padding:4px 0;
+  }
+  .ticket-row-lbl{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:rgba(110,31,51,.6);
+    font-weight:700;
+    flex-shrink:0;
+  }
+  .ticket-row-val{
+    font-weight:600;
+    color:var(--wine);
+    font-size:18px;
+    letter-spacing:.02em;
+  }
+  .ticket-row-val--big{
+    font-size:26px;
+    letter-spacing:.04em;
+    color:var(--wine-deep);
+  }
+  .ticket-row-dots{
+    flex:1;
+    height:1px;
+    border-bottom:1px dashed rgba(110,31,51,.3);
+    margin-bottom:6px;
+    min-width:24px;
+  }
+
+  .ticket-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    padding-top:14px;
+    border-top:1px solid rgba(110,31,51,.15);
+    flex-wrap:wrap;
+  }
+  .ticket-foot-text{
+    font-size:11px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--wine);
+    font-weight:600;
+  }
+  .ticket-foot-dates{
+    font-family:'Cormorant Garamond',serif;
+    font-size:14px;
+    font-weight:600;
+    color:var(--wine-soft);
+    letter-spacing:.06em;
+    opacity:.85;
+  }
+
+  /* ОТРЫВНОЙ ПРАВЫЙ КРАЙ */
+  .ticket-tear{
+    position:relative;
+    background:transparent;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    z-index:2;
+    overflow:hidden;
+    padding:20px 0;
+  }
+
+  .ticket-tear-bg{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, var(--wine) 0%, var(--wine-deep) 100%);
+    -webkit-mask-image:
+      radial-gradient(circle at 100% 4px, transparent 5px, #000 5.5px);
+    mask-image:
+      radial-gradient(circle at 100% 4px, transparent 5px, #000 5.5px);
+    -webkit-mask-size: 100% 10px;
+    mask-size: 100% 10px;
+    -webkit-mask-repeat: repeat-y;
+    mask-repeat: repeat-y;
+    -webkit-mask-position: right top;
+    mask-position: right top;
+  }
+
+  .ticket-tear-line{
+    position:absolute;
+    left:0;
+    top:12px;
+    bottom:12px;
+    width:1px;
+    background-image:linear-gradient(180deg,
+      rgba(110,31,51,.6) 0 6px,
+      transparent 6px 12px);
+    background-size:1px 12px;
+    z-index:2;
+  }
+
+  .ticket-tear-num{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;
+    font-weight:700;
+    letter-spacing:.08em;
+    color:var(--champagne-soft);
+    text-shadow:0 2px 8px rgba(0,0,0,.4);
+    z-index:2;
+    position:relative;
+    padding:10px 0;
+  }
+
+  .ticket-tear-label{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.85);
+    font-weight:700;
+    z-index:2;
+    position:relative;
+  }
+
+  /* ВОДЯНОЙ ЗНАК */
+  .ticket-watermark{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+    z-index:1;
+    opacity:.13;
+  }
+  .ticket-watermark-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    transform:rotate(-6deg);
+  }
+  .ticket-watermark-letter{
+    font-family:'Cormorant Garamond',serif;
+    font-size:340px;
+    font-weight:700;
+    line-height:.8;
+    color:var(--wine);
+    letter-spacing:-.05em;
+  }
+  .ticket-watermark-text{
+    font-family:'Inter',sans-serif;
+    font-size:11px;
+    letter-spacing:.6em;
+    text-transform:uppercase;
+    color:var(--wine);
+    font-weight:700;
+  }
+
+  /* КНОПКА И ПОДСКАЗКА */
+  .promo-actions{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+  }
+
+  .promo-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:0;
+    padding:0;
+    background:linear-gradient(135deg,var(--graphite-deep),var(--wine-deep));
+    color:#fff;
+    border-radius:60px;
+    font-weight:600;
+    font-size:17px;
+    text-decoration:none;
+    cursor:pointer;
+    overflow:hidden;
+    position:relative;
+    box-shadow:
+      0 18px 36px -14px rgba(20,11,15,.9),
+      0 0 0 1px rgba(224,201,166,.4);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .promo-btn::before{
+    content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(224,201,166,.5),transparent);
+    transform:skewX(-20deg);transition:left .7s ease;
+  }
+  .promo-btn:hover::before{left:130%}
+  .promo-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:
+      0 26px 46px -14px rgba(20,11,15,1),
+      0 0 30px -6px rgba(224,201,166,.5);
+  }
+  .promo-btn-text{
+    padding:17px 10px 17px 34px;
+    white-space:nowrap;
+  }
+  .promo-btn-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:46px;
+    height:46px;
+    margin:6px 6px 6px 10px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--champagne),var(--champagne-deep));
+    transition:transform .3s ease;
+  }
+  .promo-btn-arrow svg{
+    width:16px;height:16px;
+    stroke:var(--graphite-deep);
+    stroke-width:2;
+    fill:none;
+  }
+  .promo-btn:hover .promo-btn-arrow{
+    transform:translateX(3px) rotate(-4deg);
+  }
+
+  .promo-hint{
+    font-size:11px;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--champagne-deep);
+    font-weight:600;
+    opacity:.75;
+  }
+
+  /* адаптив промо */
+  @media (max-width:1100px){
+    .ticket{
+      grid-template-columns: 64px 14px 1fr 84px;
+    }
+    .ticket-main{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .ticket-main-right{
+      padding-top:14px;
+      padding-left:0;
+      border-left:none;
+      border-top:1px solid rgba(110,31,51,.15);
+      gap:10px;
+    }
+    .ticket-emblem{
+      width:96px;height:96px;
+      padding-top:18px;
+    }
+    .ticket-emblem-inner{font-size:54px}
+    .ticket-emblem-pct{font-size:22px}
+    .ticket-watermark-letter{font-size:240px}
+  }
+
+  @media (max-width:720px){
+    .ticket{
+      grid-template-columns: 56px 12px 1fr 72px;
+    }
+    .ticket-body{padding:20px 20px 16px}
+    .ticket-header{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .ticket-header-meta{
+      align-items:flex-start;
+      text-align:left;
+    }
+    .ticket-emblem{
+      width:84px;height:84px;
+      padding-top:16px;
+    }
+    .ticket-emblem-inner{font-size:46px}
+    .ticket-emblem-pct{font-size:18px}
+    .ticket-main-l1{font-size:22px}
+    .ticket-main-left{gap:14px}
+    .ticket-watermark-letter{font-size:180px}
+    .ticket-watermark-text{font-size:8px;letter-spacing:.4em}
+    .ticket-tear-num{font-size:26px}
+    .ticket-tear-label{font-size:10px;letter-spacing:.32em}
+    .ticket-stub-num{font-size:16px}
+    .ticket-stub-text{font-size:8px;letter-spacing:.22em}
+    .ticket-stub-sub{font-size:7px;letter-spacing:.16em}
+    .ticket-row{font-size:15px}
+    .ticket-row-lbl{font-size:10px}
+    .ticket-row-val{font-size:15px}
+    .ticket-row-val--big{font-size:22px}
+  }
+
+  @media (max-width:520px){
+    .ticket{
+      grid-template-columns: 46px 10px 1fr 58px;
+    }
+    .ticket-stub{padding:16px 8px}
+    .ticket-body{padding:16px 16px 14px;gap:12px}
+    .ticket-foot{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:8px;
+    }
+    .ticket-foot-text,
+    .ticket-foot-dates{font-size:10px}
+    .ticket-row{font-size:14px;gap:8px}
+    .ticket-row-lbl{font-size:9px}
+    .ticket-row-val{font-size:14px}
+    .ticket-row-val--big{font-size:19px}
+    .ticket-main-right{gap:8px}
+    .ticket-tear-num{font-size:20px}
+    .ticket-tear-label{font-size:8px;letter-spacing:.24em}
+    .ticket-watermark{display:none}
+    .promo-btn{font-size:15px}
+    .promo-btn-text{padding:15px 8px 15px 26px}
+    .promo-btn-arrow{width:40px;height:40px}
+  }
+
+  /* GALLERY */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:200px;gap:18px;
+  }
+  .gallery-item{
+    border-radius:22px;overflow:hidden;position:relative;cursor:pointer;
+    box-shadow:var(--shadow-sm);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease;
+    display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  .gallery-item::before{
+    content:'';position:absolute;inset:0;
+    transition:transform 1.2s cubic-bezier(.2,.8,.2,1);
+  }
+  .gallery-item.g1::before{
+    background:
+      radial-gradient(circle at 30% 30%, rgba(224,201,166,.6), transparent 55%),
+      linear-gradient(140deg, var(--graphite-deep), var(--wine-deep) 70%, var(--graphite-soft));
+  }
+  .gallery-item.g2::before{
+    background:
+      radial-gradient(circle at 70% 20%, rgba(224,201,166,.5), transparent 55%),
+      linear-gradient(140deg, var(--wine), var(--graphite) 80%);
+  }
+  .gallery-item.g3::before{
+    background:
+      radial-gradient(circle at 50% 80%, rgba(200,194,196,.5), transparent 55%),
+      linear-gradient(160deg, var(--rose-deep), var(--graphite-deep) 70%);
+  }
+  .gallery-item.g4::before{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 8px, transparent 8px 22px),
+      linear-gradient(140deg, var(--silver-mute), var(--wine-deep));
+  }
+  .gallery-item.g5::before{
+    background:
+      radial-gradient(circle at 20% 70%, rgba(224,201,166,.5), transparent 50%),
+      linear-gradient(140deg, var(--graphite-soft), var(--graphite-deep));
+  }
+  .gallery-item.g6::before{
+    background:
+      repeating-linear-gradient(45deg, rgba(224,201,166,.08) 0 6px, transparent 6px 18px),
+      linear-gradient(140deg, var(--wine), var(--silver-mute));
+  }
+  .gallery-item.g7::before{
+    background:
+      radial-gradient(circle at 50% 50%, rgba(224,201,166,.4), transparent 60%),
+      linear-gradient(140deg, var(--graphite), var(--rose-deep));
+  }
+  .gallery-item .glyph{
+    position:relative;z-index:2;
+    font-family:'Cormorant Garamond',serif;
+    font-size:52px;font-weight:600;font-style:italic;letter-spacing:.04em;
+    color:rgba(255,255,255,.9);text-shadow:0 6px 20px rgba(0,0,0,.35);
+    transition:transform .6s ease, opacity .4s ease;
+  }
+  .gallery-item .glyph small{
+    display:block;font-family:'Inter',sans-serif;
+    font-size:9px;font-style:normal;font-weight:600;
+    letter-spacing:.28em;text-transform:uppercase;
+    opacity:.85;margin-top:6px;text-align:center;color:var(--champagne-soft);
+  }
+  .gallery-item::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%,rgba(20,11,15,.8));
+    opacity:0;transition:opacity .45s ease;
+  }
+  .gallery-item .caption{
+    position:absolute;left:20px;bottom:16px;
+    color:#fff;font-weight:500;font-size:14px;letter-spacing:.02em;
+    opacity:0;transform:translateY(8px);
+    transition:opacity .45s ease, transform .45s ease;
+    z-index:3;
+  }
+  .gallery-item .caption small{
+    display:block;font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;opacity:.8;margin-bottom:4px;font-weight:600;
+    color:var(--champagne-soft);
+  }
+  .gallery-item:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow-md), 0 0 30px -10px rgba(224,201,166,.4);
+  }
+  .gallery-item:hover::before{transform:scale(1.1)}
+  .gallery-item:hover::after{opacity:1}
+  .gallery-item:hover .glyph{transform:scale(1.15);opacity:.4}
+  .gallery-item:hover .caption{opacity:1;transform:translateY(0)}
+  .gallery-item.tall{grid-row:span 2}
+  .gallery-item.wide{grid-column:span 2}
+
+  /* CONTACTS */
+  .contact-section{padding:40px 0 110px;position:relative;z-index:1}
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1.25fr;gap:40px;
+    background:rgba(255,255,255,.88);backdrop-filter:blur(14px);
+    border-radius:var(--radius);padding:56px;
+    box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,.9);
+    position:relative;overflow:hidden;
+  }
+  .contact-grid::before{
+    content:'';position:absolute;inset:0;border-radius:var(--radius);padding:1.5px;
+    background:linear-gradient(135deg,var(--champagne),transparent 30%,transparent 70%,var(--wine));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    opacity:.6;pointer-events:none;
+  }
+  .contact-info h3{
+    font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;
+    margin-bottom:26px;color:var(--graphite-deep);
+  }
+  .contact-item{
+    display:flex;align-items:center;gap:16px;padding:18px 0;
+    border-bottom:1px solid rgba(200,194,196,.4);font-size:17px;color:var(--text-dark);
+    transition:transform .3s ease;
+  }
+  .contact-item:hover{transform:translateX(6px)}
+  .contact-item .ci-icon{
+    width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--paper-100),var(--champagne-soft));
+    border-radius:13px;flex-shrink:0;
+    box-shadow:0 8px 16px -12px rgba(20,11,15,.6);
+    transition:background .3s ease, transform .3s ease;
+  }
+  .contact-item .ci-icon svg{
+    width:18px;height:18px;stroke:var(--wine);stroke-width:1.5;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s ease;
+  }
+  .contact-item:hover .ci-icon{
+    background:linear-gradient(135deg,var(--graphite-deep),var(--wine-deep));
+    transform:rotate(-6deg) scale(1.05);
+  }
+  .contact-item:hover .ci-icon svg{stroke:#fff}
+  .contact-item:last-of-type{border-bottom:none}
+  .contact-note{
+    margin-top:28px;padding:22px 26px;border-radius:22px;
+    background:linear-gradient(120deg,var(--paper-100),var(--champagne-soft));
+    font-weight:500;color:var(--graphite-deep);display:flex;align-items:center;gap:16px;
+    font-size:15px;border:1px solid rgba(224,201,166,.4);
+    box-shadow:0 14px 30px -22px rgba(20,11,15,.7);
+  }
+  .contact-note svg{width:26px;height:26px;stroke:var(--wine);stroke-width:1.4;fill:none;flex-shrink:0}
+
+  .map-container{
+    border-radius:24px;overflow:hidden;min-height:420px;position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+    padding:32px 24px;
+    border:1px solid rgba(20,11,15,.15);
+    background:
+      repeating-linear-gradient(0deg, rgba(20,11,15,.07) 0 1px, transparent 1px 42px),
+      repeating-linear-gradient(90deg, rgba(20,11,15,.07) 0 1px, transparent 1px 42px),
+      linear-gradient(115deg, transparent 30%, rgba(110,31,51,.24) 30% 40%, transparent 40%),
+      linear-gradient(205deg, transparent 55%, rgba(224,201,166,.24) 55% 66%, transparent 66%),
+      linear-gradient(160deg, var(--paper-100), var(--paper-200));
+    box-shadow:inset 0 0 40px rgba(20,11,15,.12);
+  }
+  .map-pin{
+    position:absolute;top:42%;left:50%;
+    transform:translate(-50%,-50%);
+    width:56px;height:56px;border-radius:50%;
+    background:rgba(255,255,255,.97);
+    display:flex;align-items:center;justify-content:center;z-index:2;
+    box-shadow:0 0 0 12px rgba(224,201,166,.35), 0 0 0 26px rgba(224,201,166,.15);
+    animation:pinPulse 2.4s ease-in-out infinite;
+  }
+  .map-pin svg{width:26px;height:26px;stroke:var(--wine);stroke-width:1.6;fill:none}
+  @keyframes pinPulse{
+    0%,100%{box-shadow:0 0 0 12px rgba(224,201,166,.35), 0 0 0 26px rgba(224,201,166,.15)}
+    50%{box-shadow:0 0 0 20px rgba(224,201,166,.25), 0 0 0 40px rgba(224,201,166,.07)}
+  }
+  .map-info{position:relative;z-index:2;text-align:center}
+  .map-label{
+    font-family:'Cormorant Garamond',serif;
+    font-size:22px;font-weight:600;margin-bottom:10px;
+    color:var(--graphite-deep);
+    text-shadow:0 1px 2px rgba(255,255,255,.6);
+  }
+  .map-address{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(135deg,var(--graphite-deep),var(--wine-deep));
+    padding:10px 22px;border-radius:60px;
+    font-size:15px;font-weight:600;color:#fff;
+    box-shadow:0 16px 28px -16px rgba(0,0,0,.6);
+  }
+  .map-address svg{width:15px;height:15px;stroke:var(--champagne);stroke-width:1.8;fill:none}
+  .map-note{margin-top:12px;font-size:12px;color:var(--text-muted);position:relative;z-index:2}
+
+  /* FOOTER */
+  .footer{
+    padding:36px 0;border-top:1px solid rgba(20,11,15,.1);
+    text-align:center;color:var(--text-muted);font-size:14px;
+    position:relative;z-index:1;background:rgba(247,243,242,.7);
+  }
+  .footer strong{
+    font-family:'Cormorant Garamond',serif;letter-spacing:.16em;font-size:16px;
+    background:linear-gradient(90deg,var(--wine),var(--champagne-deep),var(--wine));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    background-size:200% auto;animation:goldFlow 6s linear infinite;
+  }
+  @keyframes goldFlow{to{background-position:200% center}}
+
+  .fade-up{
+    opacity:0;transform:translateY(34px);
+    transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1);
+  }
+  .fade-up.visible{opacity:1;transform:translateY(0)}
+
+  /* ADAPTIVE */
+  @media (max-width:1280px){
+    .container-wide{ max-width:100%; padding:0 20px; }
+    .services-grid{ grid-template-columns:repeat(3, 1fr); gap:22px; }
+    .service-card h3{ font-size:26px; }
+    .service-card{ min-height:480px; }
+    .gallery-grid{ grid-template-columns:repeat(3, 1fr); gap:18px; }
+    .contact-grid{ padding:44px; }
+  }
+  @media (max-width:1024px){
+    .hero-content{padding:calc(var(--header-h) + 40px) 24px 70px}
+    .hero-age .num{font-size:clamp(120px, 22vw, 180px)}
+    .hero-age .label .l1{font-size:clamp(30px, 5vw, 46px)}
+    .hero-sub{font-size:18px}
+    .slider-dots{right:24px;bottom:28px}
+    .slider-counter{left:24px;bottom:28px}
+    .slider-arrow.prev{left:16px}
+    .slider-arrow.next{right:16px}
+    .hero-side-label{display:none}
+    .marquee-track{font-size:20px;gap:44px}
+    .marquee-track span{gap:44px}
+    .gallery-grid{grid-template-columns:repeat(2,1fr); gap:16px}
+    .gallery-item.wide{grid-column:span 2}
+    .services-grid{ grid-template-columns:repeat(2, 1fr); gap:26px; }
+    .container-wide{ padding:0 20px; }
+    .service-card{ min-height:420px; }
+  }
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .contact-grid{grid-template-columns:1fr;padding:36px}
+  }
+  @media (max-width:640px){
+    .slider-arrow{display:none}
+    .brand-name{font-size:18px;letter-spacing:.1em}
+    .brand-sub,.brand-founded{font-size:7px;letter-spacing:.18em}
+    .hero{min-height:600px;height:100vh}
+    .hero-middle{padding-left:20px}
+    .btn-primary{padding:16px 32px;font-size:15px}
+    .btn-ghost{padding:16px 26px;font-size:15px}
+
+    .services-grid{ grid-template-columns:1fr; gap:24px; }
+    .container-wide{ padding:0 16px; }
+    .service-card{ min-height:0; }
+    .service-photo{ aspect-ratio:1 / 0.75; }
+    .service-body{ padding:24px 24px 30px 24px; }
+    .service-card h3{ font-size:24px; }
+    .service-stamp{ width:44px; height:44px; font-size:13px; }
+  }
+  @media (max-width:560px){
+    .gallery-grid{grid-template-columns:1fr;grid-auto-rows:220px}
+    .gallery-item.wide{grid-column:span 1}
+    .gallery-item.tall{grid-row:span 1}
+    .phone-header span{display:none}
+    .phone-header{padding:11px 15px}
+    .brand-sub,.brand-founded{display:none}
+    .hero-content{padding:calc(var(--header-h) + 20px) 18px 50px}
+    .marquee-track{font-size:16px;gap:32px}
+    .marquee-track span{gap:32px}
+    .hero-age{gap:14px}
+    .hero-age .num{font-size:110px}
+    .hero-age .label .l1{font-size:26px}
+    .hero-sub{font-size:15px}
+    .slider-counter .current{font-size:32px}
+    .slider-counter .sep,.slider-counter .total{font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">КУАФЮР</span>
+        <span class="brand-sub">студия Натальи Юдиной</span>
+        <span class="brand-founded">основана в 2009</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#services">Услуги</a>
+      <a href="#promo">Акции</a>
+      <a href="#gallery">Работы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <a href="tel:+74912345678" class="phone-header">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+      <span>+7 (4912) 34-56-78</span>
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="slides">
+    <div class="slide s1 active"></div>
+    <div class="slide s2"></div>
+    <div class="slide s3"></div>
+    <div class="slide s4"></div>
+    <div class="slide s5"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-side-label">Куафюр · салон красоты · Рязань</div>
+
+  <button class="slider-arrow prev" aria-label="Предыдущий слайд" id="slidePrev">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="slider-arrow next" aria-label="Следующий слайд" id="slideNext">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <div class="hero-content">
+
+    <div class="hero-top">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Студия красоты в Рязани
+      </div>
+    </div>
+
+    <div class="hero-middle">
+      <div class="hero-age">
+        <div class="num">15</div>
+        <div class="label">
+          <span class="l1">лет опыта</span>
+          <span class="l2">с 2009 года · Рязань</span>
+        </div>
+      </div>
+
+      <p class="hero-sub">
+        Маникюр, педикюр, стрижки, окрашивание, трихология и уход.
+        Премиальные материалы и тёплая атмосфера в центре города.
+      </p>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-actions">
+        <a href="#contacts" class="btn-primary" data-magnetic>
+          Записаться
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#promo" class="btn-ghost" data-magnetic>
+          <svg viewBox="0 0 24 24"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+          Скидка 15%
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="slider-counter" id="sliderCounter">
+    <span class="current">01</span>
+    <span class="sep">/</span>
+    <span class="total">05</span>
+  </div>
+
+  <div class="slider-dots" id="sliderDots">
+    <button class="active" data-slide="0" aria-label="Слайд 1"></button>
+    <button data-slide="1" aria-label="Слайд 2"></button>
+    <button data-slide="2" aria-label="Слайд 3"></button>
+    <button data-slide="3" aria-label="Слайд 4"></button>
+    <button data-slide="4" aria-label="Слайд 5"></button>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>Маникюр</span>
+    <span>Педикюр</span>
+    <span>Стрижки</span>
+    <span>Окрашивание</span>
+    <span>Трихология</span>
+    <span>Укладки</span>
+    <span>Уход</span>
+    <span>Маникюр</span>
+    <span>Педикюр</span>
+    <span>Стрижки</span>
+    <span>Окрашивание</span>
+    <span>Трихология</span>
+    <span>Укладки</span>
+    <span>Уход</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container-wide">
+    <div class="section-header fade-up">
+      <div class="label">Что мы предлагаем</div>
+      <h2>Услуги и <span>сервис</span></h2>
+    </div>
+
+    <div class="services-grid">
+
+      <a href="#contacts" class="service-card fade-up">
+        <div class="service-photo p-manicure">
+          <div class="service-number">01</div>
+          <div class="photo-tag">Топ-услуга</div>
+        </div>
+        <div class="service-body">
+          <h3>Маникюр</h3>
+          <p>Аппаратный, комбинированный и дизайн любой сложности. Стерильные инструменты и премиальные материалы.</p>
+          <span class="service-price">от 1 500 ₽</span>
+          <div class="service-stamp">01</div>
+        </div>
+      </a>
+
+      <a href="#contacts" class="service-card fade-up">
+        <div class="service-photo p-pedicure">
+          <div class="service-number">02</div>
+          <div class="photo-tag">Забота</div>
+        </div>
+        <div class="service-body">
+          <h3>Педикюр</h3>
+          <p>Эстетический и медицинский педикюр, работа с проблемными зонами, покрытие гель-лаком.</p>
+          <span class="service-price">от 2 000 ₽</span>
+          <div class="service-stamp">02</div>
+        </div>
+      </a>
+
+      <a href="#contacts" class="service-card fade-up">
+        <div class="service-photo p-haircut">
+          <div class="service-number">03</div>
+          <div class="photo-tag">Стиль</div>
+        </div>
+        <div class="service-body">
+          <h3>Стрижки и укладки</h3>
+          <p>Женские, мужские и детские стрижки, укладки на выход, вечерние причёски и образы.</p>
+          <span class="service-price">от 1 800 ₽</span>
+          <div class="service-stamp">03</div>
+        </div>
+      </a>
+
+      <a href="#contacts" class="service-card fade-up">
+        <div class="service-photo p-coloring">
+          <div class="service-number">04</div>
+          <div class="photo-tag">Новинка</div>
+        </div>
+        <div class="service-body">
+          <h3>Окрашивание</h3>
+          <p>Однотонное, блонд, шатуш, балаяж, тонирование и сложные техники. Подбор оттенка по типу внешности.</p>
+          <span class="service-price">от 3 500 ₽</span>
+          <div class="service-stamp">04</div>
+        </div>
+      </a>
+
+      <a href="#contacts" class="service-card fade-up">
+        <div class="service-photo p-trichology">
+          <div class="service-number">05</div>
+          <div class="photo-tag">Здоровье</div>
+        </div>
+        <div class="service-body">
+          <h3>Трихология</h3>
+          <p>Диагностика кожи головы, лечение выпадения, укрепление и восстановление волос. Индивидуальные программы.</p>
+          <span class="service-price">от 2 500 ₽</span>
+          <div class="service-stamp">05</div>
+        </div>
+      </a>
+
+      <a href="#contacts" class="service-card fade-up">
+        <div class="service-photo p-payment">
+          <div class="service-number">06</div>
+          <div class="photo-tag">Удобно</div>
+        </div>
+        <div class="service-body">
+          <h3>Оплата картой</h3>
+          <p>Принимаем все виды банковских карт, бесконтактную оплату и оплату по QR-коду.</p>
+          <span class="service-price">Visa · MC · МИР</span>
+          <div class="service-stamp">06</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROMO — ТЕАТРАЛЬНЫЙ БИЛЕТ -->
+<section id="promo" class="promo-section">
+  <div class="container-wide">
+    <div class="promo-card fade-up">
+
+      <div class="ticket">
+
+        <aside class="ticket-stub">
+          <div class="ticket-stub-text">Куафюр · карта лояльности</div>
+          <div class="ticket-stub-num">№ 008002</div>
+          <div class="ticket-stub-sub">
+            <span>Серия КФ</span>
+            <span>№ 008002</span>
+          </div>
+        </aside>
+
+        <div class="ticket-perf" aria-hidden="true"></div>
+
+        <div class="ticket-body">
+
+          <div class="ticket-header">
+            <div class="ticket-header-logo">
+              <span class="ticket-logo-zebra"></span>
+              <div class="ticket-logo-text">
+                <span class="ticket-logo-name">КУАФЮР</span>
+                <span class="ticket-logo-sub">студия Натальи Юдиной</span>
+              </div>
+            </div>
+            <div class="ticket-header-meta">
+              <span class="ticket-header-label">Карта лояльности</span>
+              <span class="ticket-header-addr">Рязань · Сенная 14</span>
+            </div>
+          </div>
+
+          <div class="ticket-main">
+
+            <div class="ticket-main-left">
+              <div class="ticket-emblem">
+                <span class="ticket-emblem-inner">15</span>
+                <span class="ticket-emblem-pct">%</span>
+              </div>
+              <div class="ticket-main-title">
+                <span class="ticket-main-l1">скидка на второй визит</span>
+                <span class="ticket-main-l2">действует на все услуги салона</span>
+              </div>
+            </div>
+
+            <div class="ticket-main-right">
+              <div class="ticket-row">
+                <span class="ticket-row-lbl">Услуга</span>
+                <span class="ticket-row-dots"></span>
+                <span class="ticket-row-val">все услуги</span>
+              </div>
+              <div class="ticket-row">
+                <span class="ticket-row-lbl">Действует</span>
+                <span class="ticket-row-dots"></span>
+                <span class="ticket-row-val">до 31.12.2026</span>
+              </div>
+              <div class="ticket-row">
+                <span class="ticket-row-lbl">Мастер</span>
+                <span class="ticket-row-dots"></span>
+                <span class="ticket-row-val">любой</span>
+              </div>
+              <div class="ticket-row">
+                <span class="ticket-row-lbl">Карта</span>
+                <span class="ticket-row-dots"></span>
+                <span class="ticket-row-val ticket-row-val--big">№ 0015</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket-foot">
+            <span class="ticket-foot-text">Карта лояльности · скидка 15% на второй визит</span>
+            <span class="ticket-foot-dates">Рязань · Сенная 14 · 09:00—21:00</span>
+          </div>
+
+        </div>
+
+        <div class="ticket-tear" aria-hidden="true">
+          <div class="ticket-tear-bg"></div>
+          <span class="ticket-tear-line"></span>
+          <span class="ticket-tear-num">15%</span>
+          <span class="ticket-tear-label">Применить</span>
+        </div>
+
+        <div class="ticket-watermark" aria-hidden="true">
+          <span class="ticket-watermark-inner">
+            <span class="ticket-watermark-letter">К</span>
+            <span class="ticket-watermark-text">КУАФЮР · СТУДИЯ КРАСОТЫ · С 2009</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="promo-actions">
+        <a href="#contacts" class="promo-btn" data-magnetic>
+          <span class="promo-btn-text">Получить карту</span>
+          <span class="promo-btn-arrow">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+        <span class="promo-hint">Оформляется за 30 секунд · бесплатно</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="container-wide">
+    <div class="section-header fade-up">
+      <div class="label">Портфолио</div>
+      <h2>Наши <span>работы</span></h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item g1 tall wide fade-up">
+        <div class="glyph">M<small>Маникюр</small></div>
+        <div class="caption"><small>Маникюр</small>Авторский дизайн</div>
+      </div>
+      <div class="gallery-item g2 fade-up">
+        <div class="glyph">P<small>Педикюр</small></div>
+        <div class="caption"><small>Педикюр</small>Гель-лак</div>
+      </div>
+      <div class="gallery-item g3 fade-up">
+        <div class="glyph">S<small>Стрижка</small></div>
+        <div class="caption"><small>Стрижка</small>Каре</div>
+      </div>
+      <div class="gallery-item g4 fade-up">
+        <div class="glyph">C<small>Окрашивание</small></div>
+        <div class="caption"><small>Окрашивание</small>Балаяж</div>
+      </div>
+      <div class="gallery-item g5 wide fade-up">
+        <div class="glyph">T<small>Трихология</small></div>
+        <div class="caption"><small>Трихология</small>Восстановление</div>
+      </div>
+      <div class="gallery-item g6 fade-up">
+        <div class="glyph">U<small>Укладка</small></div>
+        <div class="caption"><small>Укладка</small>Вечерний образ</div>
+      </div>
+      <div class="gallery-item g7 fade-up">
+        <div class="glyph">A<small>Салон</small></div>
+        <div class="caption"><small>Салон</small>Атмосфера</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" class="contact-section">
+  <div class="container-wide">
+    <div class="contact-grid fade-up">
+      <div class="contact-info">
+        <h3>Контакты</h3>
+
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>Рязань, Сенная улица, 14</span>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span>+7 (4912) 34-56-78</span>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <span>Ежедневно 09:00 — 21:00</span>
+        </div>
+
+        <div class="contact-note">
+          <svg viewBox="0 0 24 24"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M5 20h14"/></svg>
+          <span>Карта лояльности — скидка 15% на второй визит</span>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <div class="map-pin">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="map-info">
+          <div class="map-label">Студия «Куафюр»</div>
+          <div class="map-address">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Сенная ул., 14
+          </div>
+          <div class="map-note">Интерактивная карта подключается на реальном сайте</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p><strong>КУАФЮР</strong> · студия Натальи Юдиной · основана в 2009</p>
+    <p style="margin-top:8px;">© 2026 · Рязань, Сенная 14 · Все права защищены</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('#sliderDots button');
+  const counterCurrent = document.querySelector('#sliderCounter .current');
+  const prevBtn = document.getElementById('slidePrev');
+  const nextBtn = document.getElementById('slideNext');
+  const TOTAL = slides.length;
+  const SLIDE_MS = 4500;
+
+  let current = 0;
+  let timer = null;
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function goTo(index) {
+    current = ((index % TOTAL) + TOTAL) % TOTAL;
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    if (counterCurrent) counterCurrent.textContent = pad(current + 1);
+  }
+  function nextSlide(){ goTo(current + 1); }
+  function prevSlide(){ goTo(current - 1); }
+  function startAuto(){
+    clearInterval(timer);
+    timer = setInterval(() => {
+      goTo((current + 1) % TOTAL);
+    }, SLIDE_MS);
+  }
+  function stopAuto(){ clearInterval(timer); }
+
+  prevBtn.addEventListener('click', () => { prevSlide(); startAuto(); });
+  nextBtn.addEventListener('click', () => { nextSlide(); startAuto(); });
+  dots.forEach((d, i) => {
+    d.addEventListener('click', () => { goTo(i); startAuto(); });
+  });
+
+  const heroEl = document.getElementById('hero');
+  heroEl.addEventListener('mouseenter', stopAuto);
+  heroEl.addEventListener('mouseleave', startAuto);
+  startAuto();
+
+  let touchStartX = 0;
+  heroEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive: true});
+  heroEl.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      dx < 0 ? nextSlide() : prevSlide();
+      startAuto();
+    }
+  });
+
+  const header = document.getElementById('header');
+  function checkHeader(){
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }
+  checkHeader();
+  window.addEventListener('scroll', checkHeader, { passive: true });
+
+  document.querySelectorAll('[data-magnetic]').forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width/2;
+      const y = e.clientY - r.top - r.height/2;
+      el.style.transform = `translate(${x*0.16}px, ${y*0.26}px) translateY(-3px)`;
+    });
+    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+  });
+
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  fadeElements.forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e){
+      const href = this.getAttribute('href');
+      if (href === '#' || href === '') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
